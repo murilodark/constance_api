@@ -1,0 +1,44 @@
+# ======================================
+# Laravel
+# ======================================
+/api_laravel/vendor/
+/api_laravel/node_modules/
+/api_laravel/public/storage/
+/api_laravel/storage/*.key
+
+/api_laravel/.env
+/api_laravel/.env.*
+
+# ======================================
+# Cache, logs e temporários
+# ======================================
+/api_laravel/storage/framework/cache/*
+/api_laravel/storage/framework/sessions/*
+/api_laravel/storage/framework/views/*
+/api_laravel/storage/logs/*
+
+# ======================================
+# Docker
+# ======================================
+docker/mysql/data
+docker/redis/data
+
+# Meu arquivo pessoal para agilizar o desenvolvimento não versiono
+comando-docker.txt
+
+# ======================================
+# IDEs e SO
+# ======================================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+
+# ======================================
+# Build / Outros
+# ======================================
+dist/
+coverage/
