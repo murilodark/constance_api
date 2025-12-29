@@ -38,7 +38,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_INITDB_SKIP_TZINFO: 1
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./docker/mysql:/var/lib/mysql
     ports:
       - "3305:3306"
     networks:

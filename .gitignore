@@ -1,33 +1,51 @@
 # ======================================
-# Laravel
+# Laravel Core
 # ======================================
 /api_laravel/vendor/
 /api_laravel/node_modules/
-/api_laravel/public/storage/
+/api_laravel/public/storage
+/api_laravel/public/hot
 /api_laravel/storage/*.key
+/api_laravel/.phpunit.result.cache
 
+# Configurações de ambiente
 /api_laravel/.env
 /api_laravel/.env.*
+/api_laravel/.phpstorm.meta.php
+/api_laravel/_ide_helper*.php
 
 # ======================================
 # Cache, logs e temporários
 # ======================================
-/api_laravel/storage/framework/cache/*
+/api_laravel/storage/framework/cache/data/*
 /api_laravel/storage/framework/sessions/*
+/api_laravel/storage/framework/testing/*
 /api_laravel/storage/framework/views/*
 /api_laravel/storage/logs/*
+!/api_laravel/storage/logs/.gitignore
 
 # ======================================
-# Docker
+# Docker & Banco de Dados (Correção Crítica)
 # ======================================
-docker/mysql/data
-docker/redis/data
+# Ignora TUDO dentro das pastas de dados dos serviços
+docker/mysql/*
+docker/redis/*
 
-# Meu arquivo pessoal para agilizar o desenvolvimento não versiono
+# Garante que não vamos versionar sockets, logs de erro ou arquivos de trava do MySQL
+*.sock
+*.lock
+mysql.sock
+/docker/mysql/mysql.sock
+
+# ======================================
+# Arquivos Pessoais e Ferramentas
+# ======================================
 comando-docker.txt
+*.sql
+*.sqlite
 
 # ======================================
-# IDEs e SO
+# IDEs, SO e Editores
 # ======================================
 .vscode/
 .idea/
@@ -35,7 +53,7 @@ comando-docker.txt
 *.swo
 .DS_Store
 Thumbs.db
-
+.phpunit.result.cache
 
 # ======================================
 # Build / Outros
