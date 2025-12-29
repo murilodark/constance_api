@@ -1,18 +1,34 @@
 <?php
 
+use App\Exceptions\ApiExceptionHandler;
 use Illuminate\Foundation\Application;
-use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
+use App\Http\Middleware\ForceJsonResponse;
+
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
-        health: '/up',
+        // ... (suas rotas permanecem iguais)
+        using: function () {
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(function () {
+                    foreach (File::allFiles(base_path('routes/api/v1/public')) as $file) {
+                        require $file->getPathname();
+                    }
+                    foreach (File::allFiles(base_path('routes/api/v1/private')) as $file) {
+                        Route::middleware('auth:sanctum')->group($file->getPathname());
+                    }
+                });
+        }
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->api(prepend: [
+            ForceJsonResponse::class,
+        ]);
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        //
-    })->create();
+    ->withExceptions(new ApiExceptionHandler()) // <--- A mágica acontece aqui
+    ->create();
