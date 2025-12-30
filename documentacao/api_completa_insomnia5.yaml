@@ -1,0 +1,835 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: constance
+meta:
+  id: wrk_36965d70cec74b6e8a1b8d835be1adfd
+  created: 1766877059139
+  modified: 1766877059139
+  description: ""
+collection:
+  - name: public
+    meta:
+      id: fld_d778eb9cf3974bb9b14ce71675f8354b
+      created: 1767031911823
+      modified: 1767031911823
+      sortKey: -1767031911824
+      description: ""
+    children:
+      - url: http://localhost:8989/api/v1/users
+        name: users cadastro
+        meta:
+          id: req_96b290c2924e45cd9c443dcb2e19371b
+          created: 1766878284665
+          modified: 1767031927714
+          isPrivate: false
+          description: ""
+          sortKey: -1767031921470
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "name": "Teste 2",
+                "email": "teste2@teste.com",
+                "password": "123456",
+                "status": "ativo",
+                "tipo": "vendedor"
+              }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.2.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8989/api/v1/login
+        name: users login
+        meta:
+          id: req_c0b48aad16e94fc78019483ce9ae077b
+          created: 1767024430357
+          modified: 1767031921451
+          isPrivate: false
+          description: ""
+          sortKey: -1767031921370
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "email": "teste2@teste.com",
+                "password": "123456"
+              }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.2.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8989/api/v1/utils/cep/30421131
+        name: consulta cep
+        meta:
+          id: req_30dc648a457747b29de3d4dfc1e888fa
+          created: 1767031942473
+          modified: 1767032719104
+          isPrivate: false
+          description: ""
+          sortKey: -1767028690606.5
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.2.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: private
+    meta:
+      id: fld_c5f7ffdcf7d44392bb74b4f7be2ff173
+      created: 1767124649328
+      modified: 1767124754073
+      sortKey: -1767124649328
+      description: ""
+    children:
+      - name: usuario
+        meta:
+          id: fld_65c1cdc28df14adf9089dd4cab38efa7
+          created: 1767025146098
+          modified: 1767124825373
+          sortKey: -1767124684665
+          description: ""
+        children:
+          - url: http://localhost:8989/api/v1/users
+            name: list
+            meta:
+              id: req_ad7efb5a7a994af5be6d706271244f0c
+              created: 1766877126950
+              modified: 1767043804317
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459843
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/users/6
+            name: update
+            meta:
+              id: req_cbd988369f964787868654e64fbcf432
+              created: 1766889770692
+              modified: 1767046387716
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459743
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                    "name": "João Silvaalo",
+                		"email": "teste2@teste.com",
+                    "status": "ativo",
+                    "tipo": "admin"
+                  }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/users/2
+            name: delete
+            meta:
+              id: req_3083f1e70ba34e99a5a0efee903c58bd
+              created: 1766947735495
+              modified: 1767043819392
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459643
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+                disabled: false
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+              - name: accept
+                value: application/json
+                description: ""
+                disabled: true
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/login
+            name: logaut
+            meta:
+              id: req_ce85dae5c10e49d4a2aab6f88bef9e52
+              created: 1767025060902
+              modified: 1767043825960
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459543
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                    "email": "teste2@teste.com",
+                    "password": "123456"
+                  }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/me
+            name: me
+            meta:
+              id: req_51e6ccc3a2ba420e8793b7fc3fed9e03
+              created: 1767025071009
+              modified: 1767045204979
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459443
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/users/6/fornecedores
+            name: incluir fornecedor
+            meta:
+              id: req_dcdd72bb9814411dadc30af7117d6247
+              created: 1767043858717
+              modified: 1767122298040
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459693
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                "fornecedores_id": 1
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/users/5/fornecedores
+            name: remover fornecedor
+            meta:
+              id: req_e337451349fe4ee2807e8b8f0c28db34
+              created: 1767047898208
+              modified: 1767047898208
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459668
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: |
+                {
+                "fornecedores_id": 3
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/users/5/fornecedores
+            name: lista fornecedor
+            meta:
+              id: req_936a40ec7fb749b18e5d76b90b5b8af7
+              created: 1767048680931
+              modified: 1767048695207
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459655.5
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: fornecedor
+        meta:
+          id: fld_4461523ae58242c2aface162f7ec630b
+          created: 1767033809469
+          modified: 1767124778436
+          sortKey: -1767124684765
+          description: ""
+        children:
+          - url: http://localhost:8989/api/v1/fornecedores
+            name: list
+            meta:
+              id: req_d592e8905a844a3a91145a32d30c2572
+              created: 1767033809481
+              modified: 1767057338646
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459843
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/fornecedores/1
+            name: update
+            meta:
+              id: req_a721a16d0b6f42269c1b0f6c3a8cb010
+              created: 1767033809483
+              modified: 1767035034805
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459743
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "nome": "teste Constance 3",
+                    "cnpj": "12345678000199",
+                    "status": "ativo",
+                    "endereco": {
+                        "cep": "30421131",
+                        "logradouro": "Rua Teodoro de Abreu",
+                        "numero": "150",
+                        "complemento": "Bloco B",
+                        "bairro": "Nova Suíssa",
+                        "cidade": "Belo Horizonte",
+                        "estado": "MG"
+                    }
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/fornecedores/2
+            name: delete
+            meta:
+              id: req_c66b934a82f748098f8a8f6207e59332
+              created: 1767033809529
+              modified: 1767035113324
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459643
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+                disabled: false
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+              - name: accept
+                value: application/json
+                description: ""
+                disabled: true
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/fornecedores
+            name: cadastro
+            meta:
+              id: req_66e34ecb38e04102affa1e67a19920f4
+              created: 1767033873654
+              modified: 1767046108638
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459943
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "nome": "teste 3 Constance",
+                    "cnpj": "12345678000191",
+                    "status": "ativo",
+                    "endereco": {
+                        "cep": "30421131",
+                        "logradouro": "Rua Teodoro de Abreu",
+                        "numero": "150",
+                        "complemento": "Bloco B",
+                        "bairro": "Nova Suíssa",
+                        "cidade": "Belo Horizonte",
+                        "estado": "MG"
+                    }
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/fornecedores/1/produtos?page=2
+            name: lista produtos
+            meta:
+              id: req_4dd5f6301c6345c1a53bc4f9f7ee17ef
+              created: 1767057390757
+              modified: 1767121261068
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459793
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/fornecedores/1/produtos/upload
+            name: upload produtos
+            meta:
+              id: req_bc4036ccb5644dc6a760467facbe760c
+              created: 1767113417004
+              modified: 1767117005471
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459768
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - name: arquivo
+                  value: ""
+                  description: ""
+                  disabled: false
+                  fileName: D:\projetos\constance\diversos\produtos.csv
+                  type: file
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: produtos
+        meta:
+          id: fld_a53e00a4ac2746a9b1efcd382edc2549
+          created: 1767055822210
+          modified: 1767124786768
+          sortKey: -1767124684740
+          description: ""
+        children:
+          - url: http://localhost:8989/api/v1/produtos
+            name: list
+            meta:
+              id: req_e96cca37bee943fd95043d4167dc9cfa
+              created: 1767055822271
+              modified: 1767055862421
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459843
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/produtos/1
+            name: update
+            meta:
+              id: req_f473271223e145c0ac93a2293dba3b63
+              created: 1767055822307
+              modified: 1767055873412
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459743
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "nome": "teste Constance 3",
+                    "cnpj": "12345678000199",
+                    "status": "ativo",
+                    "endereco": {
+                        "cep": "30421131",
+                        "logradouro": "Rua Teodoro de Abreu",
+                        "numero": "150",
+                        "complemento": "Bloco B",
+                        "bairro": "Nova Suíssa",
+                        "cidade": "Belo Horizonte",
+                        "estado": "MG"
+                    }
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/produtos/2
+            name: delete
+            meta:
+              id: req_8c3c97a3dd2f4a11aa2ccbfd34af21cb
+              created: 1767055822397
+              modified: 1767055888446
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459643
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+                disabled: false
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+              - name: accept
+                value: application/json
+                description: ""
+                disabled: true
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/produtos
+            name: cadastro
+            meta:
+              id: req_c5dd6746fd7c4da0a8e9b3c5df78c90e
+              created: 1767055822417
+              modified: 1767057493192
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459943
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "referencia": "3 CALC-CONST-2025",
+                    "nome": "Sapato Social Couro Premium",
+                    "cor": "Preto",
+                    "preco": 289.90,
+                    "fornecedores_id": 1
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: pedidos
+        meta:
+          id: fld_17b3045e29fa4ff2ac36d3856ffb0e14
+          created: 1767122131422
+          modified: 1767124801687
+          sortKey: -1767124684715
+          description: ""
+        children:
+          - url: http://localhost:8989/api/v1/fornecedor/12345678000199/pedidos
+            name: lista pedido do fornecedor
+            meta:
+              id: req_86ca3b83863447fdac9973e4ec9288d1
+              created: 1767122131457
+              modified: 1767122993261
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459843
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/pedidos
+            name: cadastro
+            meta:
+              id: req_3e0055f959184d79be7969d34000bcbb
+              created: 1767122131496
+              modified: 1767122160987
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459943
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                	"fornecedores_id": 1,
+                	"observacao": "Pedido de calçados diversos para estoque 2025",
+                	"produtos": [
+                		{
+                			"produtos_id": 78,
+                			"quantidade": 1
+                		},
+                		{
+                			"produtos_id": 77,
+                			"quantidade": 2
+                		},
+                		{
+                			"produtos_id": 76,
+                			"quantidade": 1
+                		}
+                	]
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/pedidos/report-diario
+            name: resumo por email
+            meta:
+              id: req_7a75e9a883e44b8ba712e2ed81c6d190
+              created: 1767124261612
+              modified: 1767124289595
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459893
+            method: POST
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+    authentication:
+      type: bearer
+      token: 1|KtEUITvf1t9DhKRwuKAatNSF9beiYtCYDFIcHhhWee8424dc
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7abf20be096fc745af61641028ac120503693e49
+    created: 1766877059719
+    modified: 1766877059719
+environments:
+  name: token de autenticacao
+  meta:
+    id: env_7abf20be096fc745af61641028ac120503693e49
+    created: 1766877059663
+    modified: 1767025352457
+    isPrivate: false

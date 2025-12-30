@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index(UserFilterRequest $request)
     {
         $filter = $request->input('filter');
-        $perPage = $request->input('per_page', 2); // Número de itens por página, padrão é 10
+        $perPage = $request->input('per_page', 30); // Número de itens por página, padrão é 10
         $currentPage = $request->input('page', 1); // Página atual, padrão é 1
 
         $query = User::query();

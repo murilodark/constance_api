@@ -50,6 +50,15 @@ services:
     networks:
       - laravel
 
+  mailpit:
+    image: 'axllent/mailpit:latest'
+    restart: unless-stopped
+    ports:
+        - '8025:8025'
+        - '1025:1025'
+    networks:
+      - laravel
+
 networks:
   laravel:
     driver: bridge
