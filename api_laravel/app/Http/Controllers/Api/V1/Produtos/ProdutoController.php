@@ -3,53 +3,113 @@
 namespace App\Http\Controllers\Api\V1\Produtos;
 
 use App\Http\Controllers\Controller;
-use App\Services\ProdutoService;
+use App\Http\Requests\V1\Produto\ProdutoFilterRequest;
 use App\Http\Requests\V1\Produto\StoreProdutoRequest;
+use App\Http\Requests\V1\Produto\UpdateProdutoRequest;
+use App\Models\Produto;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Validator;
-use Exception;
 
 class ProdutoController extends Controller
 {
-    protected $produtoService;
 
-    public function __construct(ProdutoService $produtoService)
+
+
+    /**
+     * Listar produtos
+     */
+    public function index(ProdutoFilterRequest $request)
     {
-        $this->produtoService = $produtoService;
+        $filter = $request->input('filter');
+        $perPage = $request->input('per_page', 10); // Número de itens por página
+        $currentPage = $request->input('page', 1); // Página atual
+
+        $query = Produto::query()->with('fornecedor');
+
+        if ($filter) {
+            $query->where(function ($q) use ($filter) {
+                $q->where('nome', 'LIKE', "%{$filter}%")
+                    ->orWhere('referencia', 'LIKE', "%{$filter}%");
+
+                // Verifica se o filtro é um número para buscar pelo ID
+                if (is_numeric($filter)) {
+                    $q->orWhere('id', $filter);
+                }
+            });
+        }
+
+        // Aplica a ordenação e a paginação
+        $list_produtos = $query->orderBy('id', 'DESC')->paginate($perPage, ['*'], 'page', $currentPage);
+        return $this->ReturnJson($list_produtos, 'Listagem de produtos', true, 200);
     }
 
-    public function index(): JsonResponse
+    /**
+     * Criar produto
+     */
+    public function store(StoreProdutoRequest $request)
     {
-        try {
-            // Valida se o usuário pode dar 'index' em 'produtos'
-            $this->produtoService->validarAcesso('index');
-            
-            $produtos = $this->produtoService->listarTodos();
-            return $this->ReturnJson($produtos, 'Produtos listados com sucesso.', true, 200);
-        } catch (Exception $e) {
-            return $this->ReturnJson(null, $e->getMessage(), false, 403);
-        }
+        $produto = Produto::create([
+            'referencia'      => $request->referencia,
+            'nome'            => $request->nome,
+            'cor'             => $request->cor,
+            'preco'           => $request->preco,
+            'fornecedores_id' => $request->fornecedores_id,
+        ]);
+
+        return $this->ReturnJson(
+            $produto,
+            'Produto criado com sucesso.',
+            true,
+            201
+        );
     }
 
-    public function store(Request $request): JsonResponse
+    /**
+     * Exibir produto
+     */
+    public function show(Produto $produto)
     {
-        try {
-            // Valida se o usuário pode dar 'store' em 'produtos'
-            $this->produtoService->validarAcesso('store');
+        return $this->ReturnJson(
+            $produto->load('fornecedor'),
+            'Produto encontrado.'
+        );
+    }
 
-            $formRequest = new StoreProdutoRequest();
-            $validator = Validator::make($request->all(), $formRequest->rules(), $formRequest->messages());
+    /**
+     * Atualizar produto
+     */
+    public function update(UpdateProdutoRequest $request, $produto)
+    {
+        $validated = $request->validated();
+        $produto = Produto::findOrFail($produto);
+        $produto->update($validated);
+        return $this->ReturnJson($produto, 'Sucesso!', true, 200);
+    }
 
-            if ($validator->fails()) {
-                return $this->ReturnJson($validator->errors(), 'Erro de validação.', false, 422);
-            }
+    /**
+     * Remover produto
+     */
+    public function destroy(Produto $produto)
+    {
+        $produto->delete();
+        return $this->ReturnJson(
+            null,
+            'Produto removido com sucesso.'
+        );
+    }
 
-            $produto = $this->produtoService->criar($request->all());
-            return $this->ReturnJson($produto, 'Produto cadastrado com sucesso.', true, 201);
 
-        } catch (Exception $e) {
-            return $this->ReturnJson(null, $e->getMessage(), false, 403);
-        }
+    public function uploadCsv(Request $request, $fornecedorId)
+    {
+        $request->validate([
+            'arquivo' => 'required|file|mimes:csv,txt|max:10240', // Max 10MB
+        ]);
+
+        // Armazena temporariamente o arquivo
+        $path = $request->file('arquivo')->store('uploads/csv');
+
+        // Despacha o Job para a fila (Queue)
+        \App\Jobs\ProcessarUploadProdutos::dispatch($path, $fornecedorId, $request->user());
+
+        return $this->ReturnJson(null, 'O processamento da planilha foi iniciado. Você receberá um e-mail ao finalizar.', true, 202);
     }
 }

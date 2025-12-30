@@ -7,11 +7,22 @@ use App\Http\Requests\V1\Fornecedor\FornecedorFilterRequest;
 use App\Http\Requests\V1\Fornecedor\StoreFornecedorRequest;
 use App\Http\Requests\V1\Fornecedor\UpdateFornecedorRequest;
 use App\Http\Requests\V1\Fornecedor\FornecedorDeleteRequest;
+
+use Illuminate\Http\Request;
 use App\Models\Fornecedor;
+use App\Services\FornecedorService;
 use Illuminate\Support\Facades\DB;
 
 class FornecedorController extends Controller
 {
+
+    protected $fornecedorService;
+
+    public function __construct(FornecedorService $fornecedorService)
+    {
+        $this->fornecedorService = $fornecedorService;
+    }
+    
     /**
      * Listar fornecedores
      */
@@ -102,5 +113,26 @@ class FornecedorController extends Controller
     {
         $fornecedor->delete();
         return $this->ReturnJson(null, 'Fornecedor removido com sucesso.');
+    }
+
+    /**
+     * Listar produtos de um fornecedor específico
+     */
+    public function listaProdutos(Request $request, $fornecedorId)
+    {
+        try {
+            $perPage = $request->input('per_page', 10);
+            $currentPage = $request->input('page', 1);
+
+            $produtos = $this->fornecedorService->listarProdutosPorFornecedor(
+                (int) $fornecedorId,
+                (int) $perPage,
+                (int) $currentPage
+            );
+
+            return $this->ReturnJson($produtos, 'Produtos do fornecedor listados com sucesso.', true, 200);
+        } catch (\Exception $e) {
+            return $this->ReturnJson(null, 'Fornecedor não encontrado ou erro na listagem.', false, 404);
+        }
     }
 }

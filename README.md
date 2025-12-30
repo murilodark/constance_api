@@ -42,3 +42,15 @@ O sistema foi pensado para ser **simples, organizado e escalável**, seguindo bo
 ├── Dockerfile
 └── README.md
 
+
+
+Pontos Importantes para o Sucesso 
+
+Fila de upload de produtos
+Rodar o comando "php artisan queue:work", 
+se fechar o terminal ele para de rodar, caso feche apenas rode o comando novamente.
+
+Modelo do arquivo a ser importado csv
+referencia,nome,cor,preco
+CALC-CONST-001,Sapato Social Couro Premium,Preto,289.90
+CALC-CONST-002,Bota Montaria Feminina,Marrom,450.00

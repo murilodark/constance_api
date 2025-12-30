@@ -28,9 +28,7 @@ class UserFornecedorController extends Controller
  */
 public function index(int $userId): JsonResponse
 {
-    try {
-        // 1. Validação de Autorização (Regra de Negócio no Service)
-        $this->vinculoService->validarAcesso();
+   
 
         // 2. Execução da Listagem através do Service
         $resultado = $this->vinculoService->listarFornecedoresDoUsuario($userId);
@@ -43,14 +41,7 @@ public function index(int $userId): JsonResponse
             200
         );
 
-    } catch (Exception $e) {
-        return $this->ReturnJson(
-            null,
-            $e->getMessage(),
-            false,
-            403
-        );
-    }
+  
 }
 
 
@@ -61,10 +52,7 @@ public function index(int $userId): JsonResponse
      */
     public function vincular(Request $request, $userId): JsonResponse
     {
-        try {
-            // 1. Validação de Autorização (Regra de Negócio no Service)
-            // O erro 403 tem prioridade sobre os erros de validação de campos
-            $this->vinculoService->validarAcesso();
+      
 
             // 2. Validação Manual dos Campos
             // Mesclamos o userId da URL com os dados do Body para validar tudo de uma vez
@@ -109,15 +97,7 @@ public function index(int $userId): JsonResponse
                 true,
                 201
             );
-        } catch (Exception $e) {
-            // Captura o erro de autorização ou exceções inesperadas
-            return $this->ReturnJson(
-                null,
-                $e->getMessage(),
-                false,
-                403
-            );
-        }
+      
     }
 
 
@@ -127,10 +107,7 @@ public function index(int $userId): JsonResponse
      */
     public function desvincular(Request $request, $userId): JsonResponse
     {
-        try {
-            // 1. Validação de Autorização (Regra de Negócio no Service)
-            // O erro de permissão continua sendo a primeira checagem
-            $this->vinculoService->validarAcesso();
+     
 
             // 2. Validação Manual dos Campos
             // Injetamos o userId da URL para que o DesvinculoFornecedorRequest valide se ele existe
@@ -174,15 +151,7 @@ public function index(int $userId): JsonResponse
                 true,
                 200
             );
-        } catch (Exception $e) {
-            // Captura erro 403 de autorização ou falhas críticas
-            return $this->ReturnJson(
-                null,
-                $e->getMessage(),
-                false,
-                403
-            );
-        }
+      
     }
 
 

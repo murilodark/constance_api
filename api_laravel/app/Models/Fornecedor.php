@@ -20,6 +20,15 @@ class Fornecedor extends Model
     ];
 
     /**
+     * Relacionamento: Um fornecedor tem muitos produtos
+     */
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class, 'fornecedores_id');
+    }
+
+
+    /**
      * Relacionamento: Um fornecedor tem muitos endereços
      */
     public function enderecos(): HasMany

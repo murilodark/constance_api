@@ -10,21 +10,8 @@ use Exception;
 class FornecedorVinculoService
 {
 
-    protected $authService;
 
-    // Injeção de Dependência do AuthService
-    public function __construct(AuthService $authService)
-    {
-        $this->authService = $authService;
-    }
-
-    /**
-     * Valida se o usuário logado tem permissão de Admin Ativo
-     */
-    public function validarAcesso(): void
-    {
-        $this->authService->checkPermission('vinculos');
-    }
+  
 
     public function vincularVendedorAoFornecedor(int $vendedorId, int $fornecedorId): array
     {
