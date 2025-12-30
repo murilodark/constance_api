@@ -29,6 +29,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(prepend: [
             ForceJsonResponse::class,
         ]);
+
+        $middleware->alias([
+            'check.permission' => \App\Http\Middleware\CheckModulePermission::class,
+        ]);
     })
     ->withExceptions(new ApiExceptionHandler()) // <--- A mágica acontece aqui
     ->create();
