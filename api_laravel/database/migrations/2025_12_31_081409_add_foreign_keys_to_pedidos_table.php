@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('pedidos', function (Blueprint $table) {
             $table->foreign(['fornecedores_id'], 'fk_pedidos_fornecedores1')->references(['id'])->on('fornecedores')->onUpdate('no action')->onDelete('restrict');
+            $table->foreign(['users_id'], 'fk_pedidos_users1')->references(['id'])->on('users')->onUpdate('no action')->onDelete('no action');
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('pedidos', function (Blueprint $table) {
             $table->dropForeign('fk_pedidos_fornecedores1');
+            $table->dropForeign('fk_pedidos_users1');
         });
     }
 };

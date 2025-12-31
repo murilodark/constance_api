@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('valor_total', 10)->nullable();
             $table->string('observacao')->nullable();
             $table->enum('status', ['Pendente', 'Concluído', 'Cancelado'])->nullable();
+            $table->unsignedBigInteger('users_id')->index('fk_pedidos_users1_idx');
         });
     }
 

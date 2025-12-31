@@ -58,6 +58,15 @@ class User extends Authenticatable
     }
 
     // --- RELACIONAMENTOS ---
+    /**
+     * Retorna todos os pedidos vinculados ao usuário (vendedor)
+     */
+    public function pedidos()
+    {
+        // Ajuste o nome da chave estrangeira conforme seu banco (ex: 'users_id')
+        return $this->hasMany(Pedido::class, 'users_id');
+    }
+
     public function fornecedores()
     {
         return $this->belongsToMany(Fornecedor::class, 'users_has_fornecedores', 'users_id', 'fornecedores_id')

@@ -17,12 +17,12 @@ class AuthService
             'fornecedores' => ['index', 'store', 'show', 'update', 'destroy', 'listaProdutos', 'uploadCsv', 'listarPorFornecedor'],
             'produtos'     => ['index', 'store', 'show', 'update', 'destroy'],
             'vinculos'     => ['index', 'vincular', 'desvincular'],
-            'pedidos' => ['index', 'store', 'show', 'update', 'destroy','listarPorFornecedor','dispararReportDiario'],
+            'pedidos' => ['index', 'store', 'show', 'update', 'destroy','listarPorFornecedor','dispararReportDiario','meusPedidos','obterEstatisticas','updateStatus'],
         ],
         'vendedor' => [
             'produtos'     => ['index', 'show'], // Vendedor só visualiza produtos
             'vinculos'     => ['index'],         // Vendedor só vê seus vínculos
-            'pedidos' => ['index', 'store', 'show','listarPorFornecedor','dispararReportDiario'], // Vendedor pode criar e ver
+            'pedidos' => [ 'store', 'show','listarPorFornecedor','dispararReportDiario','meusPedidos','obterEstatisticas'], // Vendedor pode criar e ver
             'fornecedores' => ['index', 'listaProdutos', 'listarPorFornecedor'], // Vendedor pode ver fornecedores e seus produtos
         ]
     ];
