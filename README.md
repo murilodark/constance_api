@@ -7,14 +7,20 @@ O sistema permite que vendedores realizem pedidos para diversos fornecedores, en
 docker-compose.yml: Configuração da infraestrutura Docker na raiz do projeto.
 🛠️ Como Instalar e Rodar o Projeto
 Siga a ordem exata dos comandos abaixo para configurar o ambiente:
+
 1. Clonar o Repositório
 bash
-git clone [github.com](https://github.com/murilodark/constance_api.git)
+git clone https://github.com/murilodark/constance_api.git
 cd constance_api
 Use o código com cuidado.
 
 2. Subir a Infraestrutura (Docker)
 bash
+
+---- veja se a o diretório docker/mysql existe, ----
+------se não crie o diretório docker/mysql ---
+
+
 docker compose up -d
 Use o código com cuidado.
 
@@ -26,6 +32,7 @@ docker exec -u root -it constance_api-app-1 bash
 
 # Navegar para a pasta do Laravel e configurar
 cd api_laravel
+export COMPOSER_PROCESS_TIMEOUT=2000
 composer install
 php artisan key:generate
 php artisan jwt:secret

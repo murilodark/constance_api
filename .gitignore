@@ -9,8 +9,8 @@
 /api_laravel/.phpunit.result.cache
 
 # Configurações de ambiente
-api_laravel/.env
-api_laravel/.env.*
+# api_laravel/.env
+# api_laravel/.env.*
 /api_laravel/.phpstorm.meta.php
 /api_laravel/_ide_helper*.php
 
