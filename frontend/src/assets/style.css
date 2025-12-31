@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+/* Isso garante que as cores e utilitários básicos funcionem */
+:root {
+  --color-primary: #1e3a8a;
+}

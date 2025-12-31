@@ -15,41 +15,6 @@ collection:
       sortKey: -1767031911824
       description: ""
     children:
-      - url: http://localhost:8989/api/v1/users
-        name: users cadastro
-        meta:
-          id: req_96b290c2924e45cd9c443dcb2e19371b
-          created: 1766878284665
-          modified: 1767031927714
-          isPrivate: false
-          description: ""
-          sortKey: -1767031921470
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-                "name": "Teste 2",
-                "email": "teste2@teste.com",
-                "password": "123456",
-                "status": "ativo",
-                "tipo": "vendedor"
-              }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/12.2.0
-            description: ""
-            disabled: false
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
       - url: http://localhost:8989/api/v1/login
         name: users login
         meta:
@@ -67,34 +32,6 @@ collection:
                 "email": "teste2@teste.com",
                 "password": "123456"
               }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/12.2.0
-            description: ""
-            disabled: false
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: http://localhost:8989/api/v1/utils/cep/30421131
-        name: consulta cep
-        meta:
-          id: req_30dc648a457747b29de3d4dfc1e888fa
-          created: 1767031942473
-          modified: 1767032719104
-          isPrivate: false
-          description: ""
-          sortKey: -1767028690606.5
-        method: GET
-        body:
-          mimeType: application/json
-          text: ""
         headers:
           - name: Content-Type
             value: application/json
@@ -131,12 +68,47 @@ collection:
             meta:
               id: req_ad7efb5a7a994af5be6d706271244f0c
               created: 1766877126950
-              modified: 1767043804317
+              modified: 1767155737513
               isPrivate: false
               description: ""
               sortKey: -1767025459843
             method: GET
             headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/users
+            name: users cadastro
+            meta:
+              id: req_96b290c2924e45cd9c443dcb2e19371b
+              created: 1766878284665
+              modified: 1767139567150
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459943
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                    "name": "Teste s2",
+                    "email": "testse2@teste.com",
+                    "password": "123456",
+                    "status": "ativo",
+                    "tipo": "vendedor"
+                  }
+            headers:
+              - name: Content-Type
+                value: application/json
               - name: User-Agent
                 value: insomnia/12.2.0
                 description: ""
@@ -276,12 +248,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: http://localhost:8989/api/v1/users/6/fornecedores
+          - url: http://localhost:8989/api/v1/users/7/fornecedores
             name: incluir fornecedor
             meta:
               id: req_dcdd72bb9814411dadc30af7117d6247
               created: 1767043858717
-              modified: 1767122298040
+              modified: 1767157467738
               isPrivate: false
               description: ""
               sortKey: -1767025459693
@@ -366,6 +338,29 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
+          - url: http://localhost:8989/api/v1/pedidos/meus-pedidos
+            name: meus pedidos
+            meta:
+              id: req_410fa15640624c9cacdcc1c24e9361e7
+              created: 1767153308086
+              modified: 1767153342895
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459818
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
       - name: fornecedor
         meta:
           id: fld_4461523ae58242c2aface162f7ec630b
@@ -374,6 +369,34 @@ collection:
           sortKey: -1767124684765
           description: ""
         children:
+          - url: http://localhost:8989/api/v1/utils/cep/30421131
+            name: consulta cep
+            meta:
+              id: req_30dc648a457747b29de3d4dfc1e888fa
+              created: 1767031942473
+              modified: 1767143559621
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459543
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
           - url: http://localhost:8989/api/v1/fornecedores
             name: list
             meta:
@@ -402,7 +425,7 @@ collection:
             meta:
               id: req_a721a16d0b6f42269c1b0f6c3a8cb010
               created: 1767033809483
-              modified: 1767035034805
+              modified: 1767146471040
               isPrivate: false
               description: ""
               sortKey: -1767025459743
@@ -514,12 +537,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: http://localhost:8989/api/v1/fornecedores/1/produtos?page=2
+          - url: http://127.0.0.1:8989/api/v1/fornecedores/1/produtos
             name: lista produtos
             meta:
               id: req_4dd5f6301c6345c1a53bc4f9f7ee17ef
               created: 1767057390757
-              modified: 1767121261068
+              modified: 1767159710752
               isPrivate: false
               description: ""
               sortKey: -1767025459793
@@ -743,37 +766,19 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: http://localhost:8989/api/v1/pedidos
-            name: cadastro
+          - url: http://localhost:8989/api/v1/pedidos/{5}/status
+            name: altera status
             meta:
               id: req_3e0055f959184d79be7969d34000bcbb
               created: 1767122131496
-              modified: 1767122160987
+              modified: 1767167591468
               isPrivate: false
               description: ""
               sortKey: -1767025459943
             method: POST
             body:
               mimeType: application/json
-              text: |
-                {
-                	"fornecedores_id": 1,
-                	"observacao": "Pedido de calçados diversos para estoque 2025",
-                	"produtos": [
-                		{
-                			"produtos_id": 78,
-                			"quantidade": 1
-                		},
-                		{
-                			"produtos_id": 77,
-                			"quantidade": 2
-                		},
-                		{
-                			"produtos_id": 76,
-                			"quantidade": 1
-                		}
-                	]
-                }
+              text: '{"status": "Concluído"}'
             headers:
               - name: Content-Type
                 value: application/json
@@ -802,6 +807,110 @@ collection:
             body:
               mimeType: application/json
               text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/pedidos/estatisticas
+            name: estatistica
+            meta:
+              id: req_dab92a06baa846638d31ae5233359657
+              created: 1767161834050
+              modified: 1767161871288
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459918
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/pedidos
+            name: lista geral
+            meta:
+              id: req_c1fe1e8182474467913d435061ebfed4
+              created: 1767165494721
+              modified: 1767165509073
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459930.5
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.2.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8989/api/v1/pedidos
+            name: cadastro
+            meta:
+              id: req_0e00a429b3a4484b9b50b45f7c2e5d52
+              created: 1767167001012
+              modified: 1767167535689
+              isPrivate: false
+              description: ""
+              sortKey: -1767025459936.75
+            method: POST
+            body:
+              mimeType: application/json
+              text: |+
+                {
+                	"fornecedores_id": 1,
+                	"observacao": "Pedido de calçados diversos para estoque 2025",
+                	"produtos": [
+                		{
+                			"produtos_id": 78,
+                			"quantidade": 1
+                		},
+                		{
+                			"produtos_id": 77,
+                			"quantidade": 2
+                		},
+                		{
+                			"produtos_id": 76,
+                			"quantidade": 1
+                		}
+                	]
+                }
+
+
             headers:
               - name: Content-Type
                 value: application/json

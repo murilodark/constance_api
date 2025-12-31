@@ -9,8 +9,8 @@
 /api_laravel/.phpunit.result.cache
 
 # Configurações de ambiente
-/api_laravel/.env
-/api_laravel/.env.*
+api_laravel/.env
+api_laravel/.env.*
 /api_laravel/.phpstorm.meta.php
 /api_laravel/_ide_helper*.php
 
@@ -60,3 +60,28 @@ Thumbs.db
 # ======================================
 dist/
 coverage/
+
+
+# ======================================
+# Frontend (Vue.js / Vite / Node)
+# ======================================
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.eslintcache
+/frontend/.stylelintcache
+/frontend/.vite-inspect
+
+# Logs de erro do Node/NPM
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/pnpm-debug.log*
+
+# Configurações locais e temporários do Vite
+/frontend/.temp/
+/frontend/.cache/
+
+# Se você criar um .env específico para o front futuramente
+# /frontend/.env
+# /frontend/.env.local
+# /frontend/.env.*.local

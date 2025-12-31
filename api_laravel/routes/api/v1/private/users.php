@@ -17,6 +17,7 @@ Route::middleware('auth:sanctum')->prefix('v1/users')->group(function () {
         
         // Grupo de Permissão: users (Ações individuais)
         Route::middleware('check.permission:users')->group(function () {
+            Route::post('/', [UserController::class, 'store']);
             Route::get('/', [UserController::class, 'show']);
             Route::put('/', [UserController::class, 'update']);
             Route::delete('/', [UserController::class, 'destroy']);
