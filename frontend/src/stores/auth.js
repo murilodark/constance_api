@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', {
     },
     actions: {
         async login(credentials) {
-            const response = await api.post('/login', credentials);
+            const response = await api.post('/autentitcacao', credentials);
             const { data } = response.data; // PadrÃ£o da sua API
 
             this.token = data.token;
